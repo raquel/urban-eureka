@@ -1,0 +1,77 @@
+service: porqueira2 # NOTE: update this with your service name
+
+provider:
+  name: aws
+  stage: dev
+  runtime: java8
+  region: us-east-1
+  timeout: 30
+
+package:
+  artifact: 'target/${self:service}-${self:provider.stage}.jar'
+
+functions:
+  newUnidade:
+    handler: com.serverless.handlers.UnidadeHandler::put
+    events:
+      - http:
+          path: /unidade/{name}/{type}/{city}/{address}/{latitude}/{longitude}/{url}/{avatar}/{active}/{sescId}
+          method: put
+    vpc:
+      securityGroupIds:
+        - sg-0cdcf9b561a86039a
+      subnetIds:
+        - subnet-0eafb6a37bf0b5d6e
+        - subnet-034fd904d472e6ea2
+        - subnet-088cef5d8c04a18e2
+        - subnet-06fec5000c7b9ff27
+        - subnet-037458a282493fb61
+        - subnet-04c66b89bbeebc8c8
+  saveUnidade:
+    handler: com.serverless.handlers.UnidadeHandler::post
+    events:
+      - http:
+          path: /unidade/{id}/{name}/{type}/{city}/{address}/{latitude}/{longitude}/{url}/{avatar}/{active}/{sescId}
+          method: post
+    vpc:
+      securityGroupIds:
+        - sg-0cdcf9b561a86039a
+      subnetIds:
+        - subnet-0eafb6a37bf0b5d6e
+        - subnet-034fd904d472e6ea2
+        - subnet-088cef5d8c04a18e2
+        - subnet-06fec5000c7b9ff27
+        - subnet-037458a282493fb61
+        - subnet-04c66b89bbeebc8c8
+  getUnidade:
+    handler: com.serverless.handlers.UnidadeHandler::get
+    events:
+      - http:
+          path: /unidade/{id}
+          method: get
+    vpc:
+      securityGroupIds:
+        - sg-0cdcf9b561a86039a
+      subnetIds:
+        - subnet-0eafb6a37bf0b5d6e
+        - subnet-034fd904d472e6ea2
+        - subnet-088cef5d8c04a18e2
+        - subnet-06fec5000c7b9ff27
+        - subnet-037458a282493fb61
+        - subnet-04c66b89bbeebc8c8
+  deleteUnidade:
+    handler: com.serverless.handlers.UnidadeHandler::delete
+    events:
+      - http:
+          path: /unidade/{id}
+          method: delete
+    vpc:
+      securityGroupIds:
+        - sg-0cdcf9b561a86039a
+      subnetIds:
+        - subnet-0eafb6a37bf0b5d6e
+        - subnet-034fd904d472e6ea2
+        - subnet-088cef5d8c04a18e2
+        - subnet-06fec5000c7b9ff27
+        - subnet-037458a282493fb61
+        - subnet-04c66b89bbeebc8c8
