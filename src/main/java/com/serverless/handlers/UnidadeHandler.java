@@ -78,22 +78,22 @@ public class UnidadeHandler {
         Unidade unidade = new Unidade(); 
 
         try {
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-		transaction = session.beginTransaction();
+            Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+            transaction = session.beginTransaction();
 
-                unidade.setName(     unidadeDTO.getName());
-                unidade.setType(     TipoUnidade.UNIT_OPERATIONAL);
-                unidade.setCity(     unidadeDTO.getCity());
-                unidade.setAddress(  unidadeDTO.getAddress());
-                unidade.setLatitude( unidadeDTO.getLatitude());
-                unidade.setLongitude(unidadeDTO.getLongitude());
-                unidade.setUrl(      unidadeDTO.getUrl());
-                unidade.setSescId(   unidadeDTO.getSescId());
-                unidade.setActive(   true);
-                unidade.setAvatar(   unidadeDTO.getAvatar());
+            unidade.setName(unidadeDTO.getName());
+            unidade.setType(TipoUnidade.UNIT_OPERATIONAL);
+            unidade.setCity(unidadeDTO.getCity());
+            unidade.setAddress(unidadeDTO.getAddress());
+            unidade.setLatitude(unidadeDTO.getLatitude());
+            unidade.setLongitude(unidadeDTO.getLongitude());
+            unidade.setUrl(unidadeDTO.getUrl());
+            unidade.setSescId(unidadeDTO.getSescId());
+            unidade.setActive(true);
+            unidade.setAvatar(unidadeDTO.getAvatar());
 
-		session.save(unidade);
-		transaction.commit();
+            session.save(unidade);
+            transaction.commit();
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();
