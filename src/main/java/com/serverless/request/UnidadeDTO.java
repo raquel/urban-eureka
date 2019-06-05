@@ -1,5 +1,7 @@
 package com.serverless.request;
 
+import com.serverless.domain.Unidade;
+
 public class UnidadeDTO {
 
     private Long id;
@@ -23,6 +25,20 @@ public class UnidadeDTO {
     private Long sescId;
 
     private boolean active;
+
+    public UnidadeDTO(Unidade unidade) {
+        this.id = unidade.getId();
+        this.name = unidade.getName();
+        this.type = unidade.getType().toString();
+        this.city = unidade.getCity();
+        this.address = unidade.getAddress();
+        this.latitude = unidade.getLatitude();
+        this.longitude = unidade.getLongitude();
+        this.url = unidade.getUrl();
+        this.avatar = unidade.getAvatar();
+        this.sescId = unidade.getSescId();
+        this.active = unidade.isActive();
+    }
 
     public UnidadeDTO(Long id, String name, String type, String city, String address, String latitude, String longitude,
                       String url, String avatar, Long sescId, boolean active) {

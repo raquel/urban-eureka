@@ -2,10 +2,10 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.serverless</groupId>
-  <artifactId>porqueira2</artifactId>
+  <artifactId>plataformaVinicius</artifactId>
   <packaging>jar</packaging>
   <version>dev</version>
-  <name>porqueira2</name>
+  <name>plataformaVinicius</name>
 
   <properties>
     <maven.compiler.source>1.8</maven.compiler.source>
@@ -19,6 +19,11 @@
       <artifactId>gson</artifactId>
       <version>2.8.0</version>
     </dependency>
+    <dependency>
+    <groupId>com.amazonaws</groupId>
+    <artifactId>aws-lambda-java-events</artifactId>
+    <version>2.2.6</version>
+</dependency>
     <dependency>
       <groupId>com.amazonaws</groupId>
       <artifactId>aws-lambda-java-core</artifactId>
