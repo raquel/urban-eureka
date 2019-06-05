@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 service: plataformaVinicius # NOTE: update this with your service name
+=======
+service: urban-eureka
+>>>>>>> da0b0e749b7b2b74bc44f54e9de21184f84a6a38
 
 provider:
   name: aws
@@ -6,17 +10,41 @@ provider:
   runtime: java8
   region: us-west-2
   timeout: 30
+  vpc:
+    securityGroupIds:
+      - sg-008ad472d19399f21
+    subnetIds:
+      - subnet-39c1ff40
+        subnet-6e491225
+        subnet-fe5159a4
+        subnet-40a2226b
 
 package:
   artifact: 'target/${self:service}-${self:provider.stage}.jar'
 
 functions:
+<<<<<<< HEAD
+=======
+  newUnidade:
+    handler: com.serverless.handlers.UnidadeHandler::put
+    events:
+      - http:
+          path: /unidade/{name}/{type}/{city}/{address}/{latitude}/{longitude}/{url}/{avatar}/{active}/{sescId}
+          method: put
+  saveUnidade:
+    handler: com.serverless.handlers.UnidadeHandler::post
+    events:
+      - http:
+          path: /unidade/{id}/{name}/{type}/{city}/{address}/{latitude}/{longitude}/{url}/{avatar}/{active}/{sescId}
+          method: post
+>>>>>>> da0b0e749b7b2b74bc44f54e9de21184f84a6a38
   getUnidade:
     handler: com.serverless.handlers.MainHandler::handleRequest
     events:
       - http:
           path: /unidade/{id}
           method: get
+<<<<<<< HEAD
     vpc:
       securityGroupIds:
         - sg-008ad472d19399f21
@@ -26,3 +54,11 @@ functions:
         - subnet-fe5159a4
         - subnet-40a2226b
 
+=======
+  deleteUnidade:
+    handler: com.serverless.handlers.UnidadeHandler::delete
+    events:
+      - http:
+          path: /unidade/{id}
+          method: delete
+>>>>>>> da0b0e749b7b2b74bc44f54e9de21184f84a6a38

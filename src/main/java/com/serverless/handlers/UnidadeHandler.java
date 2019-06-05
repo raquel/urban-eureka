@@ -35,10 +35,45 @@ public class UnidadeHandler {
             return response;
         }
 
+<<<<<<< HEAD
         UnidadeDTO unidadeDto = new UnidadeDTO(unidade);
         response.setBody(gson.toJson(unidadeDto));
         response.setStatusCode(200);
         return response;
+=======
+        return unidade;
+    }
+    public Unidade put(UnidadeDTO unidadeDTO, Context context) {
+        LambdaLogger logger = context.getLogger();
+        logger.log(unidadeDTO.toString());
+        Transaction transaction = null;
+        Unidade unidade = new Unidade(); 
+
+        try {
+            Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+            transaction = session.beginTransaction();
+
+            unidade.setName(unidadeDTO.getName());
+            unidade.setType(TipoUnidade.UNIT_OPERATIONAL);
+            unidade.setCity(unidadeDTO.getCity());
+            unidade.setAddress(unidadeDTO.getAddress());
+            unidade.setLatitude(unidadeDTO.getLatitude());
+            unidade.setLongitude(unidadeDTO.getLongitude());
+            unidade.setUrl(unidadeDTO.getUrl());
+            unidade.setSescId(unidadeDTO.getSescId());
+            unidade.setActive(true);
+            unidade.setAvatar(unidadeDTO.getAvatar());
+
+            session.save(unidade);
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+        return unidade;
+>>>>>>> da0b0e749b7b2b74bc44f54e9de21184f84a6a38
     }
    
 }
